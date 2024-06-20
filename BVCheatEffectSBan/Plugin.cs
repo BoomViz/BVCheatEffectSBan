@@ -35,6 +35,6 @@ public class MyMonoBehaviourClass : MonoBehaviour
         // Ожидаем 8 секунд
         yield return new WaitForSeconds(8);
         // Выполняем команду бана в основном потоке
-        R.Commands.Execute(new ConsolePlayer(), $"/sban {player.CSteamID} perm Cheating");
+        R.Commands.Execute(new ConsolePlayer(), $"/ban {player.CSteamID} Cheating");
     }
 }
