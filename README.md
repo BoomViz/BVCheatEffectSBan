@@ -4,8 +4,11 @@ After the command is entered, an 8-second timer is activated and the BuakBossFla
 Permission - BV.СheaterEffectSban
 By default, the plugin's language is Russian.
 
+Demo video — https://youtu.be/uS48vQvmoeI
 
 /cban SteamID64|Имя игрока
 После ввода команды активируется 8-секундный таймер, и к игроку применяется эффект BuakBossFlashbang. По истечении 8 секунд игрок будет навсегда забанен за использование читов (командой /sban SID64 perm cheating из плагина Super Ban Missile) (плагин может использовать любую другую команду /sban, поскольку плагин выполняет бан по команде).
 Permission - BV.СheaterEffectSban
 По умолчанию язык в плагине — русский.
+
+Демонстрационное видео — https://youtu.be/uS48vQvmoeI
