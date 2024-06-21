@@ -5,7 +5,6 @@ using Rocket.Unturned.Player;
 using System.Collections;
 using UnityEngine;
 
-
 public class MyMonoBehaviourClass : MonoBehaviour
 {
     public static MyMonoBehaviourClass Instance;
@@ -25,15 +24,26 @@ public class MyMonoBehaviourClass : MonoBehaviour
         }
     }
 
-
-    public void BanPlayer(UnturnedPlayer player)
+    public void BanPlayer(UnturnedPlayer player, float? delay)
     {
-        StartCoroutine(BanAfterDelay(player));
+        if (delay.HasValue)
+        {
+            StartCoroutine(BanAfterDelay(player, delay.Value));
+        }
+        else
+        {
+            ExecuteBan(player);
+        }
     }
 
-    private IEnumerator BanAfterDelay(UnturnedPlayer player)
+    private IEnumerator BanAfterDelay(UnturnedPlayer player, float delay)
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(delay);
+        ExecuteBan(player);
+    }
+
+    private void ExecuteBan(UnturnedPlayer player)
+    {
         PlayerSpeedManager.RestorePlayerSpeed(player.Player);
         string command = CEBPlugin.Config.BanCommand;
         R.Commands.Execute(new ConsolePlayer(), string.Format(command, player.CSteamID));

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using BVCheatEffectSBan.Translation;
+using static SDG.Unturned.WeatherAsset;
 
 namespace BVCheatEffectSBan.Command
 {
@@ -25,15 +26,18 @@ namespace BVCheatEffectSBan.Command
 
         public void Execute(IRocketPlayer caller, string[] command)
         {
-            if (command.Length < 1)
+            ushort defaultEffectId = CEBPlugin.Config.DefaultEffect;
+            uint defaultBanTime = CEBPlugin.Config.DefaultBanTime;
+            ulong steamID;
+            UnturnedPlayer player;
+
+            if (command.Length == 0)
             {
                 UnturnedChat.Say(caller, ("InvalidSyntax").Translate());
                 return;
             }
 
             string identifier = command[0];
-            ulong steamID;
-            UnturnedPlayer player;
 
             // Проверяем, является ли идентификатор числом (SteamID64)
             if (UInt64.TryParse(identifier, out steamID))
@@ -51,27 +55,17 @@ namespace BVCheatEffectSBan.Command
                 return;
             }
 
+            ushort effectId = command.Length > 1 && ushort.TryParse(command[1], out ushort parsedEffectId) ? parsedEffectId : defaultEffectId;
+            float? banDelay = command.Length > 2 && float.TryParse(command[2], out float parsedBanDelay) ? parsedBanDelay : (command.Length == 1 ? defaultBanTime : (float?)null);
+
             PlayerSpeedManager.ReducePlayerSpeed(player.Player);
 
             // Применяем эффект к игроку
-            UnturnedChat.Say(caller, "ApplyingEffectBan".Translate(player.CharacterName, player.CSteamID));
-            EffectManager.sendEffect(167, 35, player.Position);
+            UnturnedChat.Say(caller, "ApplyingEffectBan".Translate(player.CharacterName, player.CSteamID, effectId, banDelay));
+            EffectManager.sendEffect(effectId, 50, player.Position);
 
-            // Вызываем метод ExecuteSban для бана игрока
-            ExecuteSban(player);
-        }
-
-        private void ExecuteSban(UnturnedPlayer player)
-        {
-            if (MyMonoBehaviourClass.Instance != null)
-            {
-                MyMonoBehaviourClass.Instance.BanPlayer(player);
-            }
-            else
-            {
-                // Обработка ошибки, если экземпляр не найден
-                Debug.LogError("MyMonoBehaviourClass instance not found.");
-            }
+            // Вызываем метод BanPlayer с возможным значением null для немедленного бана
+            MyMonoBehaviourClass.Instance?.BanPlayer(player, banDelay);
         }
     }
 }

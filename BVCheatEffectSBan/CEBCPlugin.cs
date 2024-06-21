@@ -42,11 +42,11 @@ namespace BVCheatEffectSBan
 
         public override TranslationList DefaultTranslations => new TranslationList()
         {
-            { "InvalidSyntax", "Неверный синтаксис. Правильный синтаксис: /cheatban <steamID64|playerName>" },
+            { "InvalidSyntax", "Неверный синтаксис. Используйте: /cban <steamID64|playerName> [effectID] [delay]" },
             { "PlayerNotFound", "Игрок не найден." },
-            { "ApplyingEffectBan", "Применен эффект + бан к игроку {0} ({1})" },
-            { "help_cheatban", "Применяет эффект, а затем выполняет команду /sban с перманентным баном за читерство."},
-            { "syntax_cheatban", "/cheatban <steamID64|ИмяИгрока>"}
+            { "ApplyingEffectBan", "Применяется эффект {2} и бан к игроку {1}({2}). Задержка: {3} секунд." },
+            { "help_cheatban", "Применяет указанный эффект и затем выполняет бан. Если эффект или время не указаны, используются значения по умолчанию." },
+            { "syntax_cheatban", "/cban <steamID64|ИмяИгрока> [IDЭффекта] [ВремяЗадержки]" },
         };
 
         protected override void Unload()
