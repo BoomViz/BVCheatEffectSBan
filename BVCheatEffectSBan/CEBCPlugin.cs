@@ -6,13 +6,16 @@ using Logger = Rocket.Core.Logging.Logger;
 
 namespace BVCheatEffectSBan
 {
-    public class CEBPlugin : RocketPlugin
+    public class CEBPlugin : RocketPlugin<Config>
     {
         public static CEBPlugin Instance;
+        public static Config Config;
+
         protected override void Load()
         {
             base.Load();
             Instance = this;
+            Config = Configuration.Instance;
             var myMonoBehaviour = new GameObject("MyMonoBehaviour").AddComponent<MyMonoBehaviourClass>();
             DontDestroyOnLoad(myMonoBehaviour);
             Logger.Log("BVCheatEffectSBan plugin loaded successfully.");

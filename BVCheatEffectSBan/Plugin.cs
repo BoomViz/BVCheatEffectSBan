@@ -1,4 +1,5 @@
-﻿using Rocket.API;
+﻿using BVCheatEffectSBan;
+using Rocket.API;
 using Rocket.Core;
 using Rocket.Unturned.Player;
 using System.Collections;
@@ -32,9 +33,9 @@ public class MyMonoBehaviourClass : MonoBehaviour
 
     private IEnumerator BanAfterDelay(UnturnedPlayer player)
     {
-        // Ожидаем 8 секунд
         yield return new WaitForSeconds(8);
-        // Выполняем команду бана в основном потоке
-        R.Commands.Execute(new ConsolePlayer(), $"/sban {player.CSteamID} perm Cheating");
+        PlayerSpeedManager.RestorePlayerSpeed(player.Player);
+        string command = CEBPlugin.Config.BanCommand;
+        R.Commands.Execute(new ConsolePlayer(), string.Format(command, player.CSteamID));
     }
 }

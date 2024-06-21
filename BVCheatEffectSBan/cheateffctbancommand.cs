@@ -51,6 +51,8 @@ namespace BVCheatEffectSBan.Command
                 return;
             }
 
+            PlayerSpeedManager.ReducePlayerSpeed(player.Player);
+
             // Применяем эффект к игроку
             UnturnedChat.Say(caller, "ApplyingEffectBan".Translate(player.CharacterName, player.CSteamID));
             EffectManager.sendEffect(167, 35, player.Position);

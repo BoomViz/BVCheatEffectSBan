@@ -67,6 +67,8 @@
   <ItemGroup>
     <Compile Include="CEBCPlugin.cs" />
     <Compile Include="cheateffctbancommand.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="movement.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
