@@ -1,4 +1,4 @@
 # BVCheatEffectSBan Plugin for RocketMod
 ## Languages
-[![ru](https://github.com/BoomViz/BVCheatEffectSBan/blob/master/README.RU.md)
-[![en](https://github.com/BoomViz/BVCheatEffectSBan/blob/master/README.EN.md)
+### [RU README](https://github.com/BoomViz/BVCheatEffectSBan/blob/master/README.RU.md)
+### [EN README](https://github.com/BoomViz/BVCheatEffectSBan/blob/master/README.EN.md)
