@@ -2,10 +2,13 @@
 ## EN
 ### THE PLUGIN IS TRANSLATED INTO RUSSIAN BY DEFAULT! (translation.xml allows you to change this)
 - This plugin allows server admins to apply a visual effect to a player and then ban him. In this case, you can set a delay before the ban.
-- Apply a visual effect to the cheater before banning him.
+- Apply a visual effect to the cheater and slow down by 70% before banning it.
 - Set a delay before the ban.
 - Customizable effect and default ban time.
 - Command: /cban <steamID64|Player name> [effectID] [delay in seconds]
+- Demonstration videos
+  - Demo Video 1 - [Click](https://youtu.be/uS48vQvmoeI)
+  - Demo Video 2 - [Click](https://youtu.be/dAjaU8FocqQ)
 
 ### You can edit the following settings:
  - DefaultEffect: ID of the effect that will be applied to players by default. (167)
@@ -20,7 +23,7 @@
 
     /cban 76561198000000000 167 8
 
-- This command will apply the effect with id 167 to the player with SteamID64 76561198000000000, and then ban him after 8 seconds.
+- This command will apply the effect with id 167 and slow down (the slow down will end on a timer) the player with steamID64 76561198000000000, and then ban them after 8 seconds.
 - If you do not specify an effect id and delay, the default values ​​from the configuration file will be used.
 - If you specify an effect id, but do not specify a delay, the delay will be 0.
 
