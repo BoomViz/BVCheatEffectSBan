@@ -44,9 +44,9 @@ namespace BVCheatEffectSBan
         {
             { "InvalidSyntax", "Неверный синтаксис. Используйте: /cban <steamID64|playerName> [effectID] [delay]" },
             { "PlayerNotFound", "Игрок не найден." },
-            { "ApplyingEffectBan", "Применяется эффект {2} и бан к игроку {1}({2}). Задержка: {3} секунд." },
+            { "ApplyingEffectBan", "Применён эффект {2} и бан к игроку {1}({2}). Задержка бана: {3} секунд." },
             { "help_cheatban", "Применяет указанный эффект и затем выполняет бан. Если эффект или время не указаны, используются значения по умолчанию." },
-            { "syntax_cheatban", "/cban <steamID64|ИмяИгрока> [IDЭффекта] [ВремяЗадержки]" },
+            { "syntax_cheatban", "/cban <steamID64|ИмяИгрока> [IDЭффекта] [ВремяЗадержкиВСекундах]" },
         };
 
         protected override void Unload()
