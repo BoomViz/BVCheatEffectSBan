@@ -56,12 +56,13 @@ namespace BVCheatEffectSBan.Command
             }
 
             ushort effectId = command.Length > 1 && ushort.TryParse(command[1], out ushort parsedEffectId) ? parsedEffectId : defaultEffectId;
-            float? banDelay = command.Length > 2 && float.TryParse(command[2], out float parsedBanDelay) ? parsedBanDelay : (command.Length == 1 ? defaultBanTime : (float?)null);
+            float? banDelay = command.Length > 2 && float.TryParse(command[2], out float parsedBanDelay) ? parsedBanDelay : (command.Length == 1 ? defaultBanTime : 0);
 
             PlayerSpeedManager.ReducePlayerSpeed(player.Player);
 
             // Применяем эффект к игроку
-            UnturnedChat.Say(caller, "ApplyingEffectBan".Translate(player.CharacterName, player.CSteamID, effectId, banDelay));
+            UnturnedChat.Say(caller, "ApplyingEffectBan".Translate(player.CharacterName, player.CSteamID, effectId));
+            UnturnedChat.Say(caller, "BanDelay".Translate(banDelay));
             EffectManager.sendEffect(effectId, 50, player.Position);
 
             // Вызываем метод BanPlayer с возможным значением null для немедленного бана
