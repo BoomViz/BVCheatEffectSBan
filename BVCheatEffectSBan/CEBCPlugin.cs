@@ -21,25 +21,6 @@ namespace BVCheatEffectSBan
             Logger.Log("BVCheatEffectSBan plugin loaded successfully.");
         }
 
-        public static bool Process(SteamPlayer player, string text)
-        {
-            bool flag = false;
-            bool result = true;
-            string a = text.Substring(0, 1);
-
-            if ((a == "@" || a == "/") && player.isAdmin)
-            {
-                flag = true;
-                result = false;
-            }
-            ChatManager.onCheckPermissions?.Invoke(player, text, ref flag, ref result);
-            if (flag)
-            {
-                Commander.execute(player.playerID.steamID, text.Substring(1));
-            }
-            return (result);
-        }
-
         public override TranslationList DefaultTranslations => new TranslationList()
         {
             { "InvalidSyntax", "Неверный синтаксис. Используйте: /cban <steamID64|playerName> [effectID] [delay]" },
